@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup as bs #TR Çektiği web sitelerindeki verileri ayr
 import json #TR Çekilen verilerin JSON formatında kaydedilmesini sağlar | EN Allows the captured data to be saved in JSON format
 
 def getBachelorDegree(Data):
+    
     """
     TR | Bu fonksiyon YÖK Atlas sitesindeki üniversitelerin lisans bölümleri olanları çeker.
     EN | This function attracts those with undergraduate departments of universities on the YOK Atlas website.
@@ -44,6 +45,7 @@ def getBachelorDegree(Data):
         Data[university] = tempData
 
 def getAssociateDegree(Data):
+    
     """
     TR | Bu fonksiyon YÖK Atlas sitesindeki üniversitelerin önlisans bölümleri olanları çeker.
     EN | This function attracts those who have associate degree departments of universities on the YOK Atlas website.
