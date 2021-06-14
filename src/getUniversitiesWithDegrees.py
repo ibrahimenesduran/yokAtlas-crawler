@@ -129,6 +129,12 @@ def getAssociateDegree(Data):
     bar.finish()
 
 def getDetailsFromWeb(Data, Universities):
+
+    """
+    TR | Bu fonksiyon YÖK Atlas sitesindeki üniversitelerin bölümlerinin detaylı verilerini çeker.
+    EN | This function retrieves the detailed data of the departments of the universities on the YOK Atlas site.
+    """
+
     if(len(Universities["BachelorDegree"]) == 0 and len(Universities["AssociateDegree"]) == 0):
         return print("Error! Not found degrees")
     
@@ -158,16 +164,16 @@ def getDetailsFromWeb(Data, Universities):
                             x = x.to_json(force_ascii = False, orient="index")
                             parsed.update(json.loads(x))
                         except:
-                            print(x)
+                            x = x.reset_index()
+                            x = x.to_json(force_ascii = False, orient="index")
+                            parsed.update(json.loads(x))
                             continue
                         
                     bar.next()
                     BachelorDegree[i][section["name"]][j] = parsed
                     
-            
-                    
-           
         Data["BachelorDegree"] = BachelorDegree
+        Data["createdTime"] = int(time.time)
         bar.finish()
 
 
