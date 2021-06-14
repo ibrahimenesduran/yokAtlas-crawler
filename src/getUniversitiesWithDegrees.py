@@ -10,31 +10,34 @@ from progress.bar import ChargingBar
 import time
 
 yokAtlas_links = {
-    "main_info" : "1000_1.php?y=",
-    "quota_placement_statistics" : "1000_2.php?y=",
-    "gender_distribution_of_students" : "1010.php?y=",
-    "geographic_places_where_students_come_from": "1020ab.php?y=",
-    "provinces_of_students": "1020c.php?y=",
-    "educational_status_of_students": "1030a.php?y=",
-    "high_school_graduation_years_of_students": "1030b.php?y=",
-    "high_school_fields_of_students": "1050b.php?y=",
-    "high_school_types_of_students": "1050a.php?y=",
-    "high_schools_from_which_students_graduated": "1060.php?y=",
-    "students_school_firsts": "1030c.php?y=",
-    "base_score_and_achievement_statistics": "1000_3.php?y=",
-    "last_placed_student_profile": "1070.php?y=",
-    "YKS_net_averages_of_students": "1210a.php?y=",
-    "students_YKS_scores": "1220.php?y=",
-    "YKS_success_order_of_students": "1230.php?y=",
-    "preference_statistics_across_the_country": "1080.php?y=",
-    "in_which_preferences_students_settled": "1040.php?y=",
-    "preference_tendency_general": "1300.php?y=",
-    "preference_tendency_university_type": "1310.php?y=",
-    "preference_tendency_universities": "1320.php?y=",
-    "preference_tendency_provinces": "1330.php?y=",
-    "preference_tendency_same_programs": "1340a.php?y=",
-    "preference_tendency_programs": "1340b.php?y=",
-    "conditions": "1110.php?y="
+    "bachelor_Degree": {
+        "main_info" : "1000_1.php?y=",
+        "quota_placement_statistics" : "1000_2.php?y=",
+        "gender_distribution_of_students" : "1010.php?y=",
+        "geographic_places_where_students_come_from": "1020ab.php?y=",
+        "provinces_of_students": "1020c.php?y=",
+        "educational_status_of_students": "1030a.php?y=",
+        "high_school_graduation_years_of_students": "1030b.php?y=",
+        "high_school_fields_of_students": "1050b.php?y=",
+        "high_school_types_of_students": "1050a.php?y=",
+        "high_schools_from_which_students_graduated": "1060.php?y=",
+        "students_school_firsts": "1030c.php?y=",
+        "base_score_and_achievement_statistics": "1000_3.php?y=",
+        "last_placed_student_profile": "1070.php?y=",
+        "YKS_net_averages_of_students": "1210a.php?y=",
+        "students_YKS_scores": "1220.php?y=",
+        "YKS_success_order_of_students": "1230.php?y=",
+        "preference_statistics_across_the_country": "1080.php?y=",
+        "in_which_preferences_students_settled": "1040.php?y=",
+        "preference_tendency_general": "1300.php?y=",
+        "preference_tendency_university_type": "1310.php?y=",
+        "preference_tendency_universities": "1320.php?y=",
+        "preference_tendency_provinces": "1330.php?y=",
+        "preference_tendency_same_programs": "1340a.php?y=",
+        "preference_tendency_programs": "1340b.php?y=",
+        "conditions": "1110.php?y="
+        }
+
 }
 
 def getBachelorDegree(Data):
@@ -135,7 +138,7 @@ def getDetailsFromWeb(Data, Universities):
         for i in Universities["BachelorDegree"]:
             for section in Universities["BachelorDegree"][i]:
                 maxBach = maxBach + 1
-        bar = ChargingBar('Getting Bachelor Degrees details', max= maxBach * len(yokAtlas_links), suffix = '%(percent).1f%% - %(eta)ds')
+        bar = ChargingBar('Getting Bachelor Degrees details', max= maxBach * len(yokAtlas_links["bachelor_Degree"]), suffix = '%(percent).1f%% - %(eta)ds')
         BachelorDegree = {}
         for i in Universities["BachelorDegree"]:
             BachelorDegree[i] = {}
@@ -143,16 +146,20 @@ def getDetailsFromWeb(Data, Universities):
                 BachelorDegree[i][section["name"]] = {}
                 code = section["link"].split("https://yokatlas.yok.gov.tr/lisans.php?y=")[1]
 
-                for j in yokAtlas_links:
+                for j in yokAtlas_links["bachelor_Degree"]:
 
-                    table_main_info = pd.read_html('https://yokatlas.yok.gov.tr/content/lisans-dynamic/{}{}'.format(yokAtlas_links[j], code))
+                    table_main_info = pd.read_html('https://yokatlas.yok.gov.tr/content/lisans-dynamic/{}{}'.format(yokAtlas_links["bachelor_Degree"][j], code))
                     parsed = {}
                    
                     for x in table_main_info:
-                        if j not in ["students_school_firsts", "in_which_preferences_students_settled"]:
-                            x = x.set_index(x.columns[0])
-                        x = x.to_json(force_ascii = False, orient="index")
-                        parsed.update(json.loads(x))
+                        try:
+                            if j not in ["students_school_firsts", "in_which_preferences_students_settled"]:
+                                x = x.set_index(x.columns[0])
+                            x = x.to_json(force_ascii = False, orient="index")
+                            parsed.update(json.loads(x))
+                        except:
+                            print(x)
+                            continue
                         
                     bar.next()
                     BachelorDegree[i][section["name"]][j] = parsed
