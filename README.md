@@ -33,6 +33,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li><a href="#license"></a>License</li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -67,9 +68,10 @@ To get a local copy up and running follow these simple steps.
    ```sh
    python main.py
    ```
-## Usage
 
+## License
 
+Distributed under the MIT License. See LICENSE for more information.
 
 ## Contact
 
