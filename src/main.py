@@ -1,14 +1,24 @@
 """
 Coded by Ibrahim Enes Duran
-06 June 2021 
+Started 06 June 2021 | Last Updated 15 June 2021
+
+NOTICE! This program is coded for educational purposes.
+If there is a data source violation, please contact the following communication channels.
+
+ibrahimenesduran@hotmail.com
 """
 import requests #TR Web sitelerindeki verileri GET metoduyla çeker | EN Gets data from websites with GET method
 from bs4 import BeautifulSoup as bs #TR Çektiği web sitelerindeki verileri ayrıştırır | EN Parses data from websites it pulls
 import json #TR Çekilen verilerin JSON formatında kaydedilmesini sağlar | EN Allows the captured data to be saved in JSON format
-import pandas as pd
-from progress.bar import ChargingBar
-import time
+import pandas as pd #TR Çekilen tabloları sözlük yapısına çevirir | EN Converts the extracted tables to dictionary structure
+from progress.bar import ChargingBar #TR Yüklenme ekranı oluşturur | EN Creates a loading screen
+import time #TR Zamanı getirir | EN Brings the time
 
+
+"""
+TR | Buradaki linkler YÖK Atlas sitesinin api servisinden özenle çekilmiştir.
+EN | The links here are carefully taken from the api service of the YOK Atlas site.
+"""
 yokAtlas_links = {
     "bachelor_Degree": {
         "main_info" : "1000_1.php?y=",
@@ -239,8 +249,6 @@ def getDetailsFromWeb(Data, Universities):
         bar.finish()
         
     Data["createdTime"] = int(time.time)
-
-
 
 
 print("Hey person! Welcome the Yok Atlas crawler.")
