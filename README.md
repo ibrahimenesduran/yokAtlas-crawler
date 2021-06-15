@@ -18,7 +18,7 @@
     <li>
       <a href="#about">About</a>
       <ul>
-        <li><a href="#data-policy">Data Policy</a></li>
+        <li><a href="#notice">Notice</a></li>
       </ul>
     </li>
     <li>
@@ -37,19 +37,11 @@
 
 ## About
 
-fiAnaliz can work synchronously across multiple platforms and allows people to learn about financial markets for free. fiAnaliz can operate on the three messaging and communication platforms with the highest number of users in Turkey.
+You will be able to easily get the data from the YOK - Council of Higher Education in Turkey - site very easily, with this program.
 
-### Data Policy
+### Notice
 
-As the fiAnaliz team, we respect your privacy rights and strive to ensure this while you are using our bots. The explanations regarding the security of your personal information are explained below and presented for your information:
-
-Messages:
-Your messages are not recorded and shared with third parties due to the importance we attach to your privacy. Your messages that only start with an exclamation point (!) are stored in our databases with AES 256-bit encryption for fault detection and usage statistics.
-
-User Information:
-Your usernames and phone numbers are stored in our databases with AES 256-bit encryption for the usage of our wallets and alarm systems. Our databases are within the borders of Turkey and your data does not go abroad.
-
-fiAnaliz team works for the security and privacy of your data.
+This program is coded for educational purposes. If there is a data source violation, please contact the following communication channels.
 
 ## Usage
 
