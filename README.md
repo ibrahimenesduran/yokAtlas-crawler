@@ -9,15 +9,7 @@
   <p align="center">
     Getting all universities with departments and details.
   <br />
-    <a href="https://api.whatsapp.com/send/?phone=16053157748&text=!yardim">Whatsapp</a>
-    ·
-    <a href="https://t.me/fiAnalizBot">Telegram</a>
-    ·
-    <a href="https://discord.com/oauth2/authorize?client_id=844210790512984096&scope=bot&permissions=8">Discord</a>
   </p>
-</p>
-<p align="center">
-<a href="https://twitter.com/intent/user?screen_name=fiAnaliz">Follow on Twitter <img src="images/twitter.png" alt="Twitter: @fiAnaliz"></a>
 </p>
 
 <details open="open">
