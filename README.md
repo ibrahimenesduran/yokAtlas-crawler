@@ -25,6 +25,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -44,10 +45,21 @@ This program is coded for educational purposes. If there is a data source violat
 
 ### Prerequisites
 
-* python
+* Install requirement packages
   ```sh
   pip install pandas beautifulsoup4 requests progress
   ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ibrahimenesduran/yokAtlas-crawler.git
+   ```
+2. In src folder
+   ```sh
+   python main.py
+   ```
 
 ## Contact
 
