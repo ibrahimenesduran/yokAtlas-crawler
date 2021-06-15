@@ -207,9 +207,9 @@ def getDetailsFromWeb(Data, Universities):
         bar = ChargingBar('Getting Associate Degrees details', max= maxBach * len(yokAtlas_links["associate_Degree"]), suffix = '%(percent).1f%% - %(eta)ds')
         AssociateDegree = {}
         for i in Universities["AssociateDegree"]:
-            BachelorDegree[i] = {}
+            AssociateDegree[i] = {}
             for section in Universities["AssociateDegree"][i]:
-                BachelorDegree[i][section["name"]] = {}
+                AssociateDegree[i][section["name"]] = {}
                 code = section["link"].split("https://yokatlas.yok.gov.tr/onlisans.php?y=")[1]
 
                 for j in yokAtlas_links["associate_Degree"]:
@@ -250,8 +250,8 @@ while(True):
         BachelorDegree, AssociateDegree = {}, {}
 
         while(True):
-            inputs[1] = input("Do you want to get bachelor degrees? Y [Yes] N [No]:")
-            inputs[2] = input("Do you want to get associate degrees? Y [Yes] N [No]:")
+            inputs[1] = input("Do you want to get bachelor degrees? Y [Yes] N [No]: ")
+            inputs[2] = input("Do you want to get associate degrees? Y [Yes] N [No]: ")
 
             if(inputs[1].upper() == "Y" and inputs[2].upper() == "Y"):
                 getBachelorDegree(BachelorDegree)
@@ -300,7 +300,7 @@ while(True):
                     print("Completed! Succesfully universities details was getted. Saved {}.json".format(filename))
                     break
             except Exception as e:
-                print("Error! Get details failed")
+                print("\nError! Get details failed")
                 print(e)
                 break
             break
