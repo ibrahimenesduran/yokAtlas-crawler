@@ -24,12 +24,9 @@
     <li>
       <a href="#usage">Usage</a>
       <ul>
-        <li><a href="#whatsapp">Whatsapp</a></li>
-        <li><a href="#telegram">Telegram</a></li>
-        <li><a href="#discord">Discord</a></li>
+        <li><a href="#notice">Notice</a></li>
       </ul>
     </li>
-    <li><a href="#system-diagram">System Diagram</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -45,50 +42,7 @@ This program is coded for educational purposes. If there is a data source violat
 
 ## Usage
 
-On which platform you want to use fiAnaliz, you can start using the invitation links below.
-<p align="center">
-    <a href="https://api.whatsapp.com/send/?phone=16053157748&text=!yardim">Whatsapp</a>
-    ·
-    <a href="https://t.me/fiAnalizBot">Telegram</a>
-    ·
-    <a href="https://discord.com/oauth2/authorize?client_id=844210790512984096&scope=bot&permissions=8">Discord</a>
-</p>
 
-You can learn the commands you can use with a private message or by typing !yardim on the group you added the bot to.
-
-<p align="center">
-    <img src="images/yardim.png" alt="Help">
-</p>
-
-### Whatsapp
-
-<p align="center">
-  <a href="https://api.whatsapp.com/send/?phone=16053157748&text=!yardim">
-    <img src="images/gifs/Whatsapp.gif" alt="Usage on Whatsapp" width="500">
-  </a>
-</p>
-
-### Telegram
-
-<p align="center">
-  <a href="https://t.me/fiAnalizBot">
-    <img src="images/gifs/Telegram.gif" alt="Usage on Telegram" width="500">
-  </a>
-</p>
-
-### Discord
-
-<p align="center">
-  <a href="https://discord.com/oauth2/authorize?client_id=844210790512984096&scope=bot&permissions=8">
-    <img src="images/gifs/Discord.gif" alt="Usage on Discord" width="500">
-  </a>
-</p>
-
-## System Diagram
-
-<p align="center">
-  <img src="images/system-diagram.png" alt="System Diagram" width="1000">
-</p>
 
 ## Contact
 
