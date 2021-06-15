@@ -41,7 +41,7 @@
 
 ## About
 
-You will be able to easily get the data from the YOK - Council of Higher Education in Turkey - site very easily, with this program.
+You will be able to easily get the data from the YOK - Council of Higher Education in Turkey - very easily, with this program.
 
 ### Notice
 
