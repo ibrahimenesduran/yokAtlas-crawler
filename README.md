@@ -46,7 +46,7 @@ This program is coded for educational purposes. If there is a data source violat
 
 * python
   ```sh
-  pip install -r requirements.txt
+  pip install pandas beautifulsoup4 requests progress
   ```
 
 ## Contact
