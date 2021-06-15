@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/ibrahimenesduran/yokAtlas-crawler">
-    <img src="images/yokLogo.png" alt="Logo" width="100" height="80">
+    <img src="images/yokLogo.png" alt="Logo" width="100">
   </a>
 
   <h3 align="center">YOK Atlas | Website Crawler</h3>
