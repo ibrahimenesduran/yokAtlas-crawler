@@ -224,10 +224,13 @@ def getDetailsFromWeb(Data, Universities):
                             x = x.to_json(force_ascii = False, orient="index")
                             parsed.update(json.loads(x))
                         except:
-                            x = x.reset_index()
-                            x = x.to_json(force_ascii = False, orient="index")
-                            parsed.update(json.loads(x))
-                            continue
+                            try:
+                                x = x.reset_index()
+                                x = x.to_json(force_ascii = False, orient="index")
+                                parsed.update(json.loads(x))
+                                continue
+                            except:
+                                continue
                         
                     bar.next()
                     AssociateDegree[i][section["name"]][j] = parsed
