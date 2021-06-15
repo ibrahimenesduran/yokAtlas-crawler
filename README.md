@@ -9,6 +9,11 @@
   <p align="center">
     Getting all universities with departments and details.
   <br />
+    <a href="https://github.com/ibrahimenesduran/yokAtlas-crawler">View Demo</a>
+    ·
+    <a href="https://github.com/ibrahimenesduran/yokAtlas-crawler/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/ibrahimenesduran/yokAtlas-crawler/issues">Request Feature</a>
   </p>
 </p>
 
@@ -43,6 +48,8 @@ This program is coded for educational purposes. If there is a data source violat
 
 ## Getting Started
 
+To get a local copy up and running follow these simple steps.
+
 ### Prerequisites
 
 * Install requirement packages
@@ -60,6 +67,9 @@ This program is coded for educational purposes. If there is a data source violat
    ```sh
    python main.py
    ```
+## Usage
+
+
 
 ## Contact
 
