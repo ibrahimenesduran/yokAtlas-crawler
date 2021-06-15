@@ -92,5 +92,5 @@ You can learn the commands you can use with a private message or by typing !yard
 
 ## Contact
 
-İbrahim Enes Duran - Istanbul Technical University - [LinkedIn](https://linkedin.com/in/ibrahimenesduran)\
-Mesut Melih Akpınar - Bogazici University - [LinkedIn](https://www.linkedin.com/in/melihakpinar)  
+İbrahim Enes Duran - Istanbul Technical University - [LinkedIn](https://linkedin.com/in/ibrahimenesduran) [E-Mail](mailto:ibrahimenesduran@hotmail.com) 
+
