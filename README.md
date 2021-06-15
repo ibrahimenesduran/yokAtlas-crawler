@@ -22,9 +22,9 @@
       </ul>
     </li>
     <li>
-      <a href="#usage">Usage</a>
+      <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#notice">Notice</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
       </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
@@ -40,9 +40,14 @@ You will be able to easily get the data from the YOK - Council of Higher Educati
 
 This program is coded for educational purposes. If there is a data source violation, please contact the following communication channels.
 
-## Usage
+## Getting Started
 
+### Prerequisites
 
+* python
+  ```sh
+  pip install -r requirements.txt
+  ```
 
 ## Contact
 
