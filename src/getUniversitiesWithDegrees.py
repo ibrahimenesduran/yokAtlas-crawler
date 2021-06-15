@@ -36,8 +36,31 @@ yokAtlas_links = {
         "preference_tendency_same_programs": "1340a.php?y=",
         "preference_tendency_programs": "1340b.php?y=",
         "conditions": "1110.php?y="
+        },
+    "associate_Degree": {
+        "main_info" : "3000_1.php?y=",
+        "quota_placement_statistics" : "3000_2.php?y=",
+        "gender_distribution_of_students" : "3010.php?y=",
+        "geographic_places_where_students_come_from": "3020ab.php?y=",
+        "provinces_of_students": "3020c.php?y=",
+        "educational_status_of_students": "3030a.php?y=",
+        "high_school_graduation_years_of_students": "3030b.php?y=",
+        "high_school_fields_of_students": "3050b.php?y=",
+        "high_school_types_of_students": "3050a.php?y=",
+        "high_schools_from_which_students_graduated": "3060.php?y=",
+        "students_school_firsts": "3030c.php?y=",
+        "last_placed_student_profile": "3070.php?y=",
+        "YKS_net_averages_of_students": "3210a.php?y=",
+        "preference_statistics_across_the_country": "3080.php?y=",
+        "in_which_preferences_students_settled": "3040.php?y=",
+        "preference_tendency_general": "3300_2.php?y=",
+        "preference_tendency_university_type": "3310b.php?y=",
+        "preference_tendency_universities": "3320b.php?y=",
+        "preference_tendency_provinces": "3330b.php?y=",
+        "preference_tendency_same_programs": "3340ab.php?y=",
+        "preference_tendency_programs": "3340bb.php?y=",
+        "conditions": "3110.php?y="
         }
-
 }
 
 def getBachelorDegree(Data):
@@ -173,8 +196,46 @@ def getDetailsFromWeb(Data, Universities):
                     BachelorDegree[i][section["name"]][j] = parsed
                     
         Data["BachelorDegree"] = BachelorDegree
-        Data["createdTime"] = int(time.time)
         bar.finish()
+    
+    if(len(Universities["AssociateDegree"]) > 0):
+        print("Starting! Getting associate degree details from yokatlas.yok.gov.tr")
+        maxBach = 0
+        for i in Universities["AssociateDegree"]:
+            for section in Universities["AssociateDegree"][i]:
+                maxBach = maxBach + 1
+        bar = ChargingBar('Getting Associate Degrees details', max= maxBach * len(yokAtlas_links["associate_Degree"]), suffix = '%(percent).1f%% - %(eta)ds')
+        AssociateDegree = {}
+        for i in Universities["AssociateDegree"]:
+            BachelorDegree[i] = {}
+            for section in Universities["AssociateDegree"][i]:
+                BachelorDegree[i][section["name"]] = {}
+                code = section["link"].split("https://yokatlas.yok.gov.tr/onlisans.php?y=")[1]
+
+                for j in yokAtlas_links["associate_Degree"]:
+
+                    table_main_info = pd.read_html('https://yokatlas.yok.gov.tr/content/onlisans-dynamic/{}{}'.format(yokAtlas_links["associate_Degree"][j], code))
+                    parsed = {}
+                   
+                    for x in table_main_info:
+                        try:
+                            if j not in ["students_school_firsts", "in_which_preferences_students_settled"]:
+                                x = x.set_index(x.columns[0])
+                            x = x.to_json(force_ascii = False, orient="index")
+                            parsed.update(json.loads(x))
+                        except:
+                            x = x.reset_index()
+                            x = x.to_json(force_ascii = False, orient="index")
+                            parsed.update(json.loads(x))
+                            continue
+                        
+                    bar.next()
+                    AssociateDegree[i][section["name"]][j] = parsed
+                    
+        Data["AssociateDegree"] = AssociateDegree
+        bar.finish()
+        
+    Data["createdTime"] = int(time.time)
 
 
 
@@ -214,8 +275,9 @@ while(True):
         with open('universities.json', 'w', encoding='utf-8') as f:
             json.dump(Data, f, ensure_ascii=False, indent=4)
             print("Completed! Succesfully {} was getted. Saved universities.json".format(inputs[3]))
+            print("Do you get universities departments details from website?")
+            print("If you want do it, restart the program and select Y [Yes] at startup")
             break
-        
     elif(inputs[0].upper() == "Y"):
         with open('universities.json', 'r', encoding='utf-8') as f:
             try:
@@ -226,7 +288,11 @@ while(True):
                 print(e)
                 break
             try:
-                Data = {}
+                Data = {
+                    "createdTime" : "",
+                    "BachelorDegree" : {},
+                    "AssociateDegree" : {}
+                    }
                 getDetailsFromWeb(Data, universities)
                 filename = int(time.time())
                 with open('{}.json'.format(filename), 'w', encoding='utf-8') as f:
