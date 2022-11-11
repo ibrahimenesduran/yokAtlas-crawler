@@ -98,7 +98,7 @@ def getBachelorDegree(Data):
         url = 'https://yokatlas.yok.gov.tr/lisans-univ.php?u=' + str(uuid)
         r = requests.get(url)
         soup = bs(r.content, "lxml", from_encoding='UTF-8')
-        university = soup.find("div", attrs={"class": "page-header"}).find('h1').text.split("'ndeki Tüm Lisans Programları  (Alfabetik Sırada)")[0]
+        university = soup.find("div", attrs={"class": "page-header"}).find('h3').text.split("'ndeki Tüm Lisans Programları  (Alfabetik Sırada)")[0]
         if(len(university) == 0):
             continue
         sections = soup.findAll("div", attrs={"class": "panel panel-primary"})
@@ -142,7 +142,7 @@ def getAssociateDegree(Data):
         url = 'https://yokatlas.yok.gov.tr/onlisans-univ.php?u=' + str(uuid)
         r = requests.get(url)
         soup = bs(r.content, "lxml", from_encoding='UTF-8')
-        university = soup.find("div", attrs={"class": "page-header"}).find('h1').text.split("'ndeki Tüm Önlisans Programları  (Alfabetik Sırada)")[0]
+        university = soup.find("div", attrs={"class": "page-header"}).find('h3').text.split("'ndeki Tüm Önlisans Programları  (Alfabetik Sırada)")[0]
         if(len(university) == 0):
             continue
         sections = soup.findAll("div", attrs={"class": "panel panel-danger"})
@@ -186,21 +186,23 @@ def getDetailsFromWeb(Data, Universities):
                 code = section["link"].split("https://yokatlas.yok.gov.tr/lisans.php?y=")[1]
 
                 for j in yokAtlas_links["bachelor_Degree"]:
-
-                    table_main_info = pd.read_html('https://yokatlas.yok.gov.tr/content/lisans-dynamic/{}{}'.format(yokAtlas_links["bachelor_Degree"][j], code))
-                    parsed = {}
-                   
-                    for x in table_main_info:
-                        try:
-                            if j not in ["students_school_firsts", "in_which_preferences_students_settled"]:
-                                x = x.set_index(x.columns[0])
-                            x = x.to_json(force_ascii = False, orient="index")
-                            parsed.update(json.loads(x))
-                        except:
-                            x = x.reset_index()
-                            x = x.to_json(force_ascii = False, orient="index")
-                            parsed.update(json.loads(x))
-                            continue
+                    try:
+                        table_main_info = pd.read_html('https://yokatlas.yok.gov.tr/content/lisans-dynamic/{}{}'.format(yokAtlas_links["bachelor_Degree"][j], code))
+                        parsed = {}
+                    
+                        for x in table_main_info:
+                            try:
+                                if j not in ["students_school_firsts", "in_which_preferences_students_settled"]:
+                                    x = x.set_index(x.columns[0])
+                                x = x.to_json(force_ascii = False, orient="index")
+                                parsed.update(json.loads(x))
+                            except:
+                                x = x.reset_index()
+                                x = x.to_json(force_ascii = False, orient="index")
+                                parsed.update(json.loads(x))
+                                continue
+                    except:
+                        continue
                         
                     bar.next()
                     BachelorDegree[i][section["name"]][j] = parsed
@@ -248,7 +250,7 @@ def getDetailsFromWeb(Data, Universities):
         Data["AssociateDegree"] = AssociateDegree
         bar.finish()
         
-    Data["createdTime"] = int(time.time)
+    Data["createdTime"] = int(time.time())
 
 
 print("Hey person! Welcome the Yok Atlas crawler.")
